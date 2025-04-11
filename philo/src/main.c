@@ -31,11 +31,16 @@ static int	check_args(char **av)
 
 int	main(int ac, char **av)
 {
-	
+	t_program		program;
+	t_philo			philos[MAX_PHILO];
 	pthread_mutex_t	forks[MAX_PHILO];
 
 	if (ac != 5 && ac != 6)
 		return (ft_putendl_fd("Syntax error!\n./philo number_of_philosophers time_to_die time_to_eat time_to_sleep\nor\n./philo number_of_philosophers time_to_die time_to_eat time_to_sleep [number_of_times_each_philosopher_must_eat]", 2), 1);
 	if (!check_args(av))
 		return (1);
+	program_init(&program, philos);
+	forks_init(forks, ft_atoi(av[1]));
+	philos_init(philos, &program, forks, av);
+	
 }
