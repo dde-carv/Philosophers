@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   philo_init.c                                       :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: dde-carv <dde-carv@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2025/04/14 17:15:41 by dde-carv          #+#    #+#             */
+/*   Updated: 2025/04/14 17:16:47 by dde-carv         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "philo.h"
 
 static void	input_init(t_philo *philo, char **av)
@@ -12,7 +24,8 @@ static void	input_init(t_philo *philo, char **av)
 		philo->times_to_eat = -1;
 }
 
-void	philos_init(t_philo *philo, t_program *program, pthread_mutex_t *forks, char **av)
+void	philos_init(t_philo *philo, t_program *program, pthread_mutex_t *forks, \
+	char **av)
 {
 	int	i;
 
@@ -24,6 +37,8 @@ void	philos_init(t_philo *philo, t_program *program, pthread_mutex_t *forks, cha
 		philo[i].is_eating = 0;
 		philo[i].count_meals = 0;
 		philo[i].death = &program->death_flag;
+		philo[i].start_time = get_time();
+		philo[i].last_meal = get_time();
 		philo[i].death_lock = &program->death_lock;
 		philo[i].lunch_lock = &program->lunch_lock;
 		philo[i].print_lock = &program->print_lock;
@@ -32,7 +47,6 @@ void	philos_init(t_philo *philo, t_program *program, pthread_mutex_t *forks, cha
 			philo[i].r_fork = &forks[philo[0].num_of_philos - 1];
 		else
 			philo[i].r_fork = &forks[i - 1];
-		i++;
 	}
 }
 

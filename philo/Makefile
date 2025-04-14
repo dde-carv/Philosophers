@@ -6,7 +6,7 @@
 #    By: dde-carv <dde-carv@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/04/08 10:17:48 by dde-carv          #+#    #+#              #
-#    Updated: 2025/04/11 16:03:02 by dde-carv         ###   ########.fr        #
+#    Updated: 2025/04/14 16:14:06 by dde-carv         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -21,8 +21,12 @@ CFLAGS			=	-Wall -Werror -Wextra -g
 RM				=	@rm -f
 
 PHILO_DIR		=	$(SRC_DIR)main.c \
+					$(SRC_DIR)big_brother.c \
 					$(SRC_DIR)philo_init.c \
-					$(SRC_DIR)philo_utils.c
+					$(SRC_DIR)philo_routine.c \
+					$(SRC_DIR)philo_utils.c \
+					$(SRC_DIR)philo_utils2.c \
+					$(SRC_DIR)threads.c
 
 SRCS			=	$(PHILO_DIR)
 
